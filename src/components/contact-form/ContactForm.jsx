@@ -1,12 +1,12 @@
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/contactSlice';
 import { useSelector } from 'react-redux';
 
 export default function FormAdd() {
   const dispatch = useDispatch();
-  const contact = useSelector(state => state.contact);
+  const contact = useSelector(state => state.contacts.contact);
 
   const handleSubmit = e => {
     e.preventDefault();

@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/actions';
+import { deleteContact } from 'redux/contactSlice';
 
 const ContactList = () => {
-  const contact = useSelector(state => state.contact);
+  const contact = useSelector(state => state.contacts.contact);
   const dispatch = useDispatch();
-  const filtration = useSelector(state => state.filter);
+  const filtration = useSelector(state => state.filters.filter);
   const deleteNumber = idValue => {
     const updContacts = contact.filter(obj => obj.idValue !== idValue);
     dispatch(deleteContact([...updContacts]));
