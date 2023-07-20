@@ -1,32 +1,47 @@
-const contactState = { contact: [] };
+import { createSlice } from '@reduxjs/toolkit';
 
-export const contactReducer = (state = contactState, action) => {
-  switch (action.type) {
-    case 'contactForm/addContact':
+const contactSlice = createSlice({
+  name: 'contacts',
+  initialState: {
+    contact: [],
+  },
+  reducers: {
+    addContact(state, action) {
       return {
         ...state,
         contact: [...state.contact, action.payload],
       };
-    case 'contactList/deleteContact':
+    },
+    deleteContact(state, action) {
       return {
         ...state,
         contact: action.payload,
       };
-    default:
-      return state;
-  }
-};
+    },
+  },
+});
 
-export const addContact = value => {
-  return {
-    type: 'contactForm/addContact',
-    payload: value,
-  };
-};
+export const { addContact, deleteContact } = contactSlice.actions;
+export const contactReducer = contactSlice.reducer;
 
-export const deleteContact = value => {
-  return {
-    type: 'contactList/deleteContact',
-    payload: value,
-  };
-};
+// const contactState = { contact: [] };
+
+// export const addContact = createAction('contactList/addContact');
+
+// export const deleteContact = createAction('contactList/deleteContact');
+
+// export const contactReducer = createReducer(contactState, builder =>
+//   builder
+//     .addCase(addContact, (state, action) => {
+//       return {
+//         ...state,
+//         contact: [...state.contact, action.payload],
+//       };
+//     })
+//     .addCase(deleteContact, (state, action) => {
+//       return {
+//         ...state,
+//         contact: action.payload,
+//       };
+//     })
+// );

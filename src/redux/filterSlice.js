@@ -1,20 +1,31 @@
-const filterState = { filter: '' };
+import { createSlice } from '@reduxjs/toolkit';
 
-export const filterReducer = (state = filterState, action) => {
-  switch (action.type) {
-    case 'contactList/filter':
+const filterSlice = createSlice({
+  name: 'filters',
+  initialState: {
+    filter: '',
+  },
+  reducers: {
+    filter(state, action) {
       return {
         ...state,
         filter: action.payload,
       };
-    default:
-      return state;
-  }
-};
+    },
+  },
+});
 
-export const addFilter = value => {
-  return {
-    type: 'contactList/filter',
-    payload: value,
-  };
-};
+export const { filter } = filterSlice.actions;
+export const filterReducer = filterSlice.reducer;
+
+// const filterState = { filter: '' };
+// export const addFilter = createAction('contactList/filter');
+
+// export const filterReducer = createReducer(filterState, builder =>
+//   builder.addCase(addFilter, (state, action) => {
+//     return {
+//       ...state,
+//       filter: action.payload,
+//     };
+//   })
+// );
