@@ -36,6 +36,8 @@ export const contactReducer = persistReducer(
 
 export const { addContact, deleteContact } = contactSlice.actions;
 
+// export const contactSelector = state => console.log(state);
+
 // const contactState = { contact: [] };
 
 // export const addContact = createAction('contactList/addContact');
